@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Guppy</title>
+  <link rel="icon" type="image/x-icon" href="favicon_1.ico">
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+  <main id="swup" class="transition-fade">
+    <div class="row">
+      <div class="colm-form">
+        <div class="form-container">
+          <input id="login" type="text" placeholder="Email address or phone number">
+          <input id=password type="password" placeholder="Password">
+          <input id="loginButton" class="btn-login" type="button" value="Login" onclick="login()" />
+	  <input id="checkButton" class="btn-login" type="button" value="Check" onclick="check()" />
+          <input type="button" class="btn-login" href="table.html" value="Next" />
+          <a href="./table.html">Next</a>
+   </main>
+</body>
+  <script src="swup.min.js"></script>
+  <script> const swup = new Swup(); </script>
+  <script type="text/javascript" src="main.js"></script>
+</html>
