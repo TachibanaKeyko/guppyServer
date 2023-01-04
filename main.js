@@ -1,11 +1,23 @@
 var socket = null;
 
+var loginButton;
+
 start();
+
+var intervalId = setInterval(function() {
+ if(socket != null) socket.send(JSON.stringify({"type": "3"}))
+}, 1000);
 
 function login()
 {
+   loginButton = document.getElementById("loginButton");
+  
+   loginButton.disabled = true;
+
    if(socket == null)
      start();
+
+   sleep(250);
 
    if(socket.readyState == 1)
    {
@@ -25,6 +37,7 @@ function start()
    socket.onopen = function() 
    {
      console.log("Соединение установлено");
+     if(loginButton != null) loginButton.disabled = false;
    };
 
    socket.onclose = function(event) 
@@ -36,6 +49,8 @@ function start()
    {
      alert("Сервер не отвечает");
      socket = null;
+     barba.go("/");
+     if(loginButton != null) loginButton.disabled = false;
    }
      //alert('Код: ' + event.code + ' причина: ' + event.reason);
    };
@@ -43,22 +58,33 @@ function start()
    socket.onmessage = function(event) 
    {
      console.log("Получены данные " + event.data);
+      
+     if(loginButton != null) loginButton.disabled = false;
      
      var data = JSON.parse(event.data);
 
      switch(data.type)
      {
-       case '1':
+       case 1:
         if(data.success == "true")
-	  alert("Logined in");
+        {
+	  //alert("Logined in");
+          barba.go("./table.html");
+          //socket.send(JSON.stringify({"type": "3"}));
+        }
 	else
 	  alert("Login error");
         break;
-       case '2':
+       case 2:
         if(data.success == "true")
 	  alert("Session authorized");
 	else
 	  alert("Session not authorized");
+	  break;
+        case 3:
+	  updateTable(data);
+	  break;
+	
      }
 
    };

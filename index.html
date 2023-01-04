@@ -1,17 +1,58 @@
-<html>
-  <head>
-    <title>Homepage</title>
-  </head>
-  <body>
-    <main id="swup" class="transition-fade">
-      <h1>This is homepage</h1>
-      <p>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-        labore et dolore magna aliqua.
-      </p>
-      <a href="table.html">Go to other page</a>
-    </main>
-  </body>
-  <script src="swup.min.js"></script>
-  <script> const swup = new Swup(); </script>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Guppy</title>
+  <link rel="icon" type="image/x-icon" href="favicon_3.ico">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="styles2.css">
+  <script src="table.js"></script>
+</head>
+    <div data-barba="wrapper">
+      <div data-barba="container" data-barba-namespace="page-a">
+       <main>
+        <div class="row">
+         <div class="colm-form">
+          <div class="form-container">
+           
+	   <input id="login" type="text" placeholder="Email address or phone number">
+           <input id=password type="password" placeholder="Password">
+           <input id="loginButton" class="btn-login" type="button" value="Login" onclick="login()" />
+	   
+           <!-- <input id="checkButton" class="btn-login" type="button" value="Check" onclick="check()" />
+           <a href="./page1.html" class="btn-login">Next</a> 
+           <input type="button" class="btn-login" href="table.html" value="Next" />
+           <a href="./page1.html" class="btn-login">Next</a> 
+	    <nav class="cl-effect-15">
+	     <a href="./page1.html" class="btn-login" data-hover="Next">Next</a>
+            </nav>-->
+
+   </main>
+ </div>
+</div>
+
+<script src="https://unpkg.com/@barba/core"></script>
+<script src="https://unpkg.com/gsap@latest/dist/gsap.min.js"></script>
+
+<script type="text/javascript">
+      barba.init({
+        transitions: [{
+          name: 'opacity-transition',
+          leave(data) {
+            //return gsap.to(data.current.container, {
+            // opacity: 0
+            //});
+          },
+          enter(data) {
+            //return gsap.from(data.next.container, {
+            //  opacity: 0
+            //});
+          }
+        }]
+      });
+</script>
+<script type="text/javascript" src="main.js"></script>
+</body>
 </html>
